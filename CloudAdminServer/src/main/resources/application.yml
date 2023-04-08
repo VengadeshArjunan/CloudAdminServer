@@ -1,0 +1,28 @@
+eureka:
+  client:
+    registry-fetch-interval-seconds: 5
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8761}/eureka/
+  instance:
+    health-check-url-path: /actuator/health
+    leaseRenewalIntervalInSeconds: 100
+    metadata-map:
+      startup: ${random.int}
+    preferIpAddress: true
+management:
+  endpoint:
+    security:
+      enabled: false
+    health:
+      show-details: ALWAYS
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+server:
+  port: 8090
+  servlet:
+    context-path: /admin
+spring:
+  application:
+    name: admin-server
